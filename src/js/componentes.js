@@ -13,9 +13,9 @@ const anchorFiltros = document.querySelectorAll('.filtro');
 export const crearTodoHtml = ( todo ) => {
 
     const htmlTodo = `
-    <li class="${ (todo.completado) ? 'completed' : ''}" data-id="${ todo.id }">
+    <li class="${ (todo.completado) ? 'completed' : '' } " data-id="${ todo.id }">
     <div class="view">
-        <input class="toggle" type="checkbox" ${ (todo.completado) ? 'checked': ''}>
+        <input class="toggle" type="checkbox" ${ (todo.completado) ? 'checked' : '' }>
         <label>${ todo.tarea }</label>
         <button class="destroy"></button>
         </div>
@@ -32,12 +32,12 @@ export const crearTodoHtml = ( todo ) => {
 }
 
 // Eventos
-txtInput.addEventListener('keyup', (event) => {
+txtInput.addEventListener('keyup', ( event ) => {
 
     if ( event.keyCode === 13 && txtInput.value.length > 0){
 
         console.log(txtInput.value);
-        const nuevoTodo = new Todo( txtInput.values );
+        const nuevoTodo = new Todo( txtInput.value );
         todoList.nuevoTodo( nuevoTodo );
 
         crearTodoHtml( nuevoTodo );
@@ -45,7 +45,7 @@ txtInput.addEventListener('keyup', (event) => {
     }
 });
 
-divTodoList.addEventListener('click', (event)=> {
+divTodoList.addEventListener('click', ( event ) => {
 
     const nombreElemento = event.target.localName;
     const todoElemento = event.target.parentElement.parentElement;
@@ -55,7 +55,7 @@ divTodoList.addEventListener('click', (event)=> {
         todoList.marcarCompletado( todoId );
         todoElemento.classList.toggle('completed');
     }else if( nombreElemento.includes('button')){
-        todoList.eliminarTodo( todoId);
+        todoList.eliminarTodo( todoId );
         divTodoList.removeChild( todoElemento );
     }
 });
